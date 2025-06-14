@@ -5,7 +5,7 @@
 - Run the following command:
 
 ```sh
-git clone https://github.com/brycetolman54/batman ~/.config/nvim/pack/plugins/start/batman
+git clone https://github.com/brycetolman54/batman \ ~/.config/nvim/pack/plugins/start/batman
 ```
 
 - Then, in your `~/.config/nvim/` folder run:
