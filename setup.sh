@@ -20,7 +20,7 @@ if [ -f "$setup/init.lua" ]; then
     echo -e "✅ \033[0;32minit\033[0m file exists"
 else
     echo -e "Creating the \033[1;32minit\033[0m file in the \033[1;34msetup\033[0m directory"
-    echo -e "require(\"setup.batman\")" > "$setup/init.lua"
+    echo -e "require(\"setup.batman\") -- this line is actually not necessary, but you do need some return statement in this file for things to work" > "$setup/init.lua"
     echo -e "  ✅ Done"
 fi
 
