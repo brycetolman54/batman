@@ -36,19 +36,19 @@ return {
 
 ## Adding Packages
 
-- To add a new package, add a line to the `batman.lua` file that looks like this:
+To add a new package, add a line to the `batman.lua` file that looks like this:
 
 ```lua
   {"packageName", "creator/package"},
 ```
 
-- The `packageName` and `package` can be different:
+The `packageName` and `package` can be different:
     - The `packageName` is what you want to call the package in your setup
     - The `package` is the actual name of the package on github
 
 ## Use
 
-- To install new packages, run  the following in NeoVim:
+To install new packages, run  the following in NeoVim:
 
 ```vim
 :BatLoad
