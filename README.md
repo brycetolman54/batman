@@ -53,3 +53,17 @@ return {
 ```vim
 :BatLoad
 ```
+
+## Todo
+
+- Add the following fucntionality:
+    - Allow adding new packages by adding lines to the lua file
+    - Make a script to run when we want to load the plugins
+    - Make one for cleaning the plugins
+    - Make one for updating the plugins
+    - Add commands for all of these
+    - Maybe make them lazy load for when tehy are used
+    - In the init, maybe run BatLoad everytime
+    - Make it print out all neat what happens with every load in its own buffer that is easy to close
+    - Maybe make docs
+    - Maybe make a checkhealth, though I don't know what I would need to check
