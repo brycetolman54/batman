@@ -5,13 +5,14 @@
 - Run the following command:
 
 ```sh
-git clone https://github.com/brycetolman54/batman ~/.config/nvim/pack/plugins/start/batman
+git clone https://github.com/brycetolman54/batman \
+~/.config/nvim/pack/plugins/start/batman
 ```
 
 - Then, in your `~/.config/nvim/` folder run:
 
 ```sh
-echo -e "[\n\t["batman", "/brycetolman54/batman"],\n]" plug-lock.json
+echo -e "[\n\t["batman", "/brycetolman54/batman"],\n]" > plug-lock.json
 ```
 
 ## Adding Packages
