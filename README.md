@@ -34,6 +34,11 @@ return {
 }
 ```
 
+4. Add the following line to your top level "init.lua" file:
+```lua
+require("batman")
+```
+
 ## Adding Packages
 
 To add a new package, add a line to the `batman.lua` file that looks like this:
