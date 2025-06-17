@@ -17,16 +17,16 @@ fi
 
 # create the init file
 if [ -f "$setup/init.lua" ]; then
-    echo -e "✅ \033[0;32minit\033[0m file exists"
+    echo -e "✅ \033[1;34msetup/\033[0;32minit\033[0m file exists"
 else
     echo -e "Creating the \033[1;32minit\033[0m file in the \033[1;34msetup\033[0m directory"
-    echo -e "require(\"setup.batman\") -- this line is actually not necessary, but you do need some return statement in this file for things to work" > "$setup/init.lua"
+    touch "$setup/init.lua"
     echo -e "  ✅ Done"
 fi
 
 # make a file for the batman config
 if [ -f "$setup/batman.lua" ]; then
-    echo -e "✅ \033[0;32mbatman\033[0m config exists"
+    echo -e "✅ \033[1;34msetup/\033[0;32mbatman\033[0m config exists"
     if ! grep -Fq "brycetolman54/batman" "$setup/batman.lua"; then
         echo -e "  ❌ please add the batman plugin to the batman config folder"
     fi
