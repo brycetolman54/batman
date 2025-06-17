@@ -59,6 +59,23 @@ To install new packages, run  the following in NeoVim:
 :BatLoad
 ```
 
+Each package, when added, is given a `package.lua` file in the setup folder. You can modify that file to change the options for each package. It is up
+to you to find out what the options for those are and how to set them.
+
+## Options
+
+Here is an example of how to set options for the manager (which you would do in the root `init.lua` file where you require the manager).
+
+Each option shows its default and then is followed by the other possible options.
+
+```lua
+require("batman").setup({
+    start = {
+        load = false (true)
+    }
+})
+```
+
 ## Todo
 
 - Add the following fucntionality:
