@@ -17,4 +17,9 @@ end, {})
 -- add the rest of the plugins' setups
 require("setup")
 
+-- allow for options
+function M.setup(opts)
+  -- do stuff with options here
+end
+
 return M
