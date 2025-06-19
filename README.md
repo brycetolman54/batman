@@ -51,7 +51,7 @@ To add a new package, add a line to the `batman.lua` file that looks like this:
   {
     name = "packageName",
     repo = "creator/package",
-    setup = false
+    setup = false,
   },
 ```
 
