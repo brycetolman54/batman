@@ -23,15 +23,23 @@ return function(plugs, setup, buf, on_done)
           if ok then
             ok, msg = update_init(setup, name, setup[i])
             if ok then
+              vim.bo[buf].modifiable = true
               vim.api.nvim_buf_set_lines(buf, -1, -1, false, { "✅ " .. name .. " added successfully" })
+              vim.bo[buf].modifiable = false
             else
+              vim.bo[buf].modifiable = true
               vim.api.nvim_buf_set_lines(buf, -1, -1, false, { msg })
+              vim.bo[buf].modifiable = false
             end
           else
+            vim.bo[buf].modifiable = true
             vim.api.nvim_buf_set_lines(buf, -1, -1, false, { msg })
+            vim.bo[buf].modifiable = false
           end
         else
+          vim.bo[buf].modifiable = true
           vim.api.nvim_buf_set_lines(buf, -1, -1, false, { msg })
+          vim.bo[buf].modifiable = false
         end
         posted = true
         coroutine.yield()
@@ -42,7 +50,7 @@ return function(plugs, setup, buf, on_done)
   local function step()
     local ok, res = coroutine.resume(co)
     if ok and coroutine.status(co) ~= "dead" then
-      vim.defer_fn(step, 50)
+      vim.defer_fn(step, 10)
     else
       if on_done then
         on_done(posted)
