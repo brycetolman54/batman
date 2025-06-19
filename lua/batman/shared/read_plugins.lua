@@ -2,6 +2,7 @@ return function()
   -- start some tables
   local names = {}
   local repos = {}
+  local setups = {}
 
   -- read in the plugins
   local ok, plugins = pcall(require, "setup.batman")
@@ -12,9 +13,10 @@ return function()
 
   -- separate out the names and repos
   for _, plug in ipairs(plugins) do
-    table.insert(names, plug[1])
-    table.insert(repos, plug[2])
+    table.insert(names, plug["name"])
+    table.insert(repos, plug["repo"])
+    table.insert(setups, plug["setup"])
   end
 
-  return names, repos
+  return names, repos, setups
 end
