@@ -30,7 +30,11 @@ require("setup.batman")
 
 ```lua
 return {
-  {"batman", "brycetolman54/batman"},
+  {
+    name = "batman",
+    repo = "brycetolman54/batman",
+    setup = true,
+  },
 }
 ```
 
@@ -44,12 +48,17 @@ require("batman")
 To add a new package, add a line to the `batman.lua` file that looks like this:
 
 ```lua
-  {"packageName", "creator/package"},
+  {
+    name = "packageName",
+    repo = "creator/package",
+    setup = false
+  },
 ```
 
 The `packageName` and `package` can be different:
     - The `packageName` is what you want to call the package in your setup
     - The `package` is the actual name of the package on github
+    - The `setup` is a bool for whether or not the plugin requires a setup file to use
 
 ## Use
 
@@ -66,19 +75,22 @@ to you to find out what the options for those are and how to set them.
 
 Here is an example of how to set options for the manager (which you would do in the root `init.lua` file where you require the manager).
 
-Each option shows its default and then is followed by the other possible options.
+Each option shows its default and then is followed by the possible options.
 
 ```lua
 require("batman").setup({
     start = {
-        load = false (true)
+        load = false (true, false)
     }
 })
 ```
 
+- Start: determines if a command should run upon NeoVim startup
+    - Load: whether or not to run BatLoad
+
 ## Todo
 
-- Add the following fucntionality:
+- Add the following functionality:
     - Allow adding new packages by adding lines to the lua file
     - Make a script to run when we want to load the plugins
     - Make one for cleaning the plugins
