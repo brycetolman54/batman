@@ -23,12 +23,17 @@ return function(plugs, setup, buf, on_done)
         if ok then
           ok, msg = rm_setup(setup, dir, del_cmd)
           if ok then
-            -- todo
+            ok, msg = update_init(setup, dir)
+            if ok then
+              s.write(buf, { "\u{2705} " .. dir .. " removed successfully" })
+            else
+              s.write(buf, { msg })
+            end
           else
-            s.write(buf, msg)
+            s.write(buf, { msg })
           end
         else
-          s.write(buf, msg)
+          s.write(buf, { msg })
         end
         posted = true
         coroutine.yield()
