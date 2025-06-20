@@ -1,8 +1,9 @@
 # BatMan
 
 This is a super simple package manager that I am writing to get a bit acquainted with Lua and to mess around with NeoVim. 
-This manager is intended more for personal use, but I have made it public in case any young person is looking around at NeoVim and doesn't want to put in the work to
-understand one of the more complicated plugin managers at the start.
+
+This manager is intended more for personal use, but I have made it public in case any young person is looking around at NeoVim and doesn't want to put in the work to understand one of the more complicated plugin managers at the start.
+
 Hopefully everything I have here is simple and straightforward. I try to make my code easy to follow. 
 
 ## Install
@@ -73,6 +74,8 @@ To remove packages, simply remove the line corresponding to the package in your 
 
 ## Commands
 
+### Install
+
 To install new packages, run the following in NeoVim:
 
 ```vim
@@ -80,7 +83,10 @@ To install new packages, run the following in NeoVim:
 ```
 
 Each package, if specified in the `batman.lua` file, is given a `<package>.lua` file in the setup folder.
+
 You can modify that file to change the options for each package. It is up to you to find out what the options for those are and how to set them.
+
+### Uninstall
 
 To uninstall unused packages, run the following in NeoVim:
 
@@ -97,9 +103,9 @@ Each option shows its default and then is followed by the possible options.
 ```lua
 require("batman").setup({
     start = {
-        load = false (true, false)
+        load = false -- true, false
     },
-    delete = "rm -rf", (any command that removes files and directories in your shell)
+    delete = "rm -rf", -- any command that removes files and directories in your shell
 })
 ```
 
@@ -111,14 +117,10 @@ Here is an explanation of what each of the options do
 ## Todo
 
 - Add the following functionality:
-    - Allow adding new packages by adding lines to the lua file
-    - Make a script to run when we want to load the plugins
-    - Make one for cleaning the plugins
     - Make one for updating the plugins
     - Add commands for all of these
     - Maybe make them lazy load for when tehy are used
     - In the init, maybe run BatLoad everytime
-    - Make it print out all neat what happens with every load in its own buffer that is easy to close
     - Maybe make docs
     - Maybe make a checkhealth, though I don't know what I would need to check
 
