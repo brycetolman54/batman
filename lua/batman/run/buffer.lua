@@ -30,6 +30,7 @@ function M.openBuf()
   vim.opt_local.wrap = false
   vim.opt_local.scrolloff = 0
   vim.opt_local.sidescrolloff = 0
+  vim.opt_local.spell = false
 
   return buf
 end

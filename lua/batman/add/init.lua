@@ -17,28 +17,34 @@ return function(plugs, setup, buf, on_done)
   local co = coroutine.create(function()
     for i, name in ipairs(names) do
       if not find_repo(dirs, name) then
-        local ok, msg = add_repo(plugs, setup, repos[i], name)
-        if ok then
-          ok, msg = add_setup(setup, name, setups[i])
-          if ok then
-            ok, msg = update_init(setup, name, setup[i])
-            if ok then
+        local ok_1, msg_1 = add_repo(plugs, setup, repos[i], name)
+        if ok_1 then
+          local ok_2, msg_2 = add_setup(setup, name, setups[i])
+          if ok_2 then
+            local ok_3, msg_3 = update_init(setup, name, setups[i])
+            if ok_3 then
               vim.bo[buf].modifiable = true
               vim.api.nvim_buf_set_lines(buf, -1, -1, false, { "✅ " .. name .. " added successfully" })
+              if msg_2 ~= "" then
+                vim.api.nvim_buf_set_lines(buf, -1, -1, falase, { msg_2 })
+              end
+              if msg_3 ~= "" then
+                vim.api.nvim_buf_set_lines(buf, -1, -1, falase, { msg_3 })
+              end
               vim.bo[buf].modifiable = false
             else
               vim.bo[buf].modifiable = true
-              vim.api.nvim_buf_set_lines(buf, -1, -1, false, { msg })
+              vim.api.nvim_buf_set_lines(buf, -1, -1, false, { msg_3 })
               vim.bo[buf].modifiable = false
             end
           else
             vim.bo[buf].modifiable = true
-            vim.api.nvim_buf_set_lines(buf, -1, -1, false, { msg })
+            vim.api.nvim_buf_set_lines(buf, -1, -1, false, { msg_2 })
             vim.bo[buf].modifiable = false
           end
         else
           vim.bo[buf].modifiable = true
-          vim.api.nvim_buf_set_lines(buf, -1, -1, false, { msg })
+          vim.api.nvim_buf_set_lines(buf, -1, -1, false, { msg_1 })
           vim.bo[buf].modifiable = false
         end
         posted = true
