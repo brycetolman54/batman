@@ -81,12 +81,14 @@ Each option shows its default and then is followed by the possible options.
 require("batman").setup({
     start = {
         load = false (true, false)
-    }
+    },
+    delete = "rm -rf",
 })
 ```
 
 - Start: determines if a command should run upon NeoVim startup
     - Load: whether or not to run BatLoad
+- Delete: command to use to remove plugin repos
 
 ## Todo
 
@@ -101,3 +103,10 @@ require("batman").setup({
     - Make it print out all neat what happens with every load in its own buffer that is easy to close
     - Maybe make docs
     - Maybe make a checkhealth, though I don't know what I would need to check
+
+<!--
+Unicode icons:
+  - Green check box: u2705
+  - Blue check box: u2611
+  - Red X: u274c
+-->

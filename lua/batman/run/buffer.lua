@@ -1,5 +1,7 @@
 local M = {}
 
+local write = require("batman.shared").write
+
 -- set up a function to open a buffer
 function M.openBuf()
   vim.cmd("tabnew")
@@ -37,9 +39,7 @@ end
 
 -- set up a function for finishing the buffer
 function M.finishBuf(buf)
-  vim.bo[buf].modifiable = true
-  vim.api.nvim_buf_set_lines(buf, -1, -1, false, { "", "Press Enter or q to close this window" })
-  vim.bo[buf].modifiable = false
+  write(buf, { "", "Press Enter or q to close this window" })
 
   vim.keymap.set("n", "q", "<cmd>tabclose<cr>", { buffer = buf, noremap = true, silent = true })
   vim.keymap.set("n", "<cr>", "<cmd>tabclose<cr>", { buffer = buf, noremap = true, silent = true })

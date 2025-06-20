@@ -3,6 +3,7 @@ local M = {
     start = {
       load = true,
     },
+    delete = "rm -rf",
   },
 }
 
