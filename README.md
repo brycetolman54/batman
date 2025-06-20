@@ -1,5 +1,10 @@
 # BatMan
 
+This is a super simple package manager that I am writing to get a bit acquainted with Lua and to mess around with NeoVim. 
+This manager is intended more for personal use, but I have made it public in case any young person is looking around at NeoVim and doesn't want to put in the work to
+understand one of the more complicated plugin managers at the start.
+Hopefully everything I have here is simple and straightforward. I try to make my code easy to follow. 
+
 ## Install
 
 Run the following command:
@@ -43,7 +48,9 @@ return {
 require("batman")
 ```
 
-## Adding Packages
+## Use
+
+### Adding Packages
 
 To add a new package, add a line to the `batman.lua` file that looks like this:
 
@@ -60,16 +67,26 @@ The `packageName` and `package` can be different:
     - The `package` is the actual name of the package on github
     - The `setup` is a bool for whether or not the plugin requires a setup file to use
 
-## Use
+### Removing packages
 
-To install new packages, run  the following in NeoVim:
+To remove packages, simply remove the line corresponding to the package in your `batman.lua` file.
+
+## Commands
+
+To install new packages, run the following in NeoVim:
 
 ```vim
 :BatLoad
 ```
 
-Each package, when added, is given a `package.lua` file in the setup folder. You can modify that file to change the options for each package. It is up
-to you to find out what the options for those are and how to set them.
+Each package, if specified in the `batman.lua` file, is given a `<package>.lua` file in the setup folder.
+You can modify that file to change the options for each package. It is up to you to find out what the options for those are and how to set them.
+
+To uninstall unused packages, run the following in NeoVim:
+
+```vim
+:BatKill
+```
 
 ## Options
 
@@ -82,10 +99,11 @@ require("batman").setup({
     start = {
         load = false (true, false)
     },
-    delete = "rm -rf",
+    delete = "rm -rf", (any command that removes files and directories in your shell)
 })
 ```
 
+Here is an explanation of what each of the options do
 - Start: determines if a command should run upon NeoVim startup
     - Load: whether or not to run BatLoad
 - Delete: command to use to remove plugin repos
