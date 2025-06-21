@@ -39,7 +39,7 @@ else
 fi
 
 # add a line to the init.lua file
-if ! grep -Fq "require(\"batman\")" "$root/init.lua"; then
+if ! grep -Fq "require(\"batman\").setup(" "$root/init.lua"; then
     echo -e "Adding batman to \033[1;32minit\033[0m file in the \033[1;34mroot\033[0m directory"
     echo -e 'require("batman")' >> "$root/init.lua"
     echo -e "  ✅ Done"

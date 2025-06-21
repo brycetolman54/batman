@@ -1,6 +1,6 @@
 # BatMan
 
-This is a super simple package manager that I am writing to get a bit acquainted with Lua and to mess around with NeoVim. 
+This is a super simple plugin manager that I am writing to get a bit acquainted with Lua and to mess around with NeoVim. 
 
 This manager is intended more for personal use, but I have made it public in case any young person is looking around at NeoVim and doesn't want to put in the work to understand one of the more complicated plugin managers at the start.
 
@@ -46,49 +46,49 @@ return {
 
 4. Add the following line to your top level "init.lua" file:
 ```lua
-require("batman")
+require("batman").setup({})
 ```
 
 ## Use
 
-### Adding Packages
+### Adding plugins
 
-To add a new package, add a line to the `batman.lua` file that looks like this:
+To add a new plugin, add a line to the `batman.lua` file that looks like this:
 
 ```lua
   {
-    name = "packageName",
-    repo = "creator/package",
-    setup = false,
+    name = "<pluginName>",
+    repo = "<creator>/<plugin>",
+    setup = <bool>,
   },
 ```
 
-The `packageName` and `package` can be different:
-    - The `packageName` is what you want to call the package in your setup
-    - The `package` is the actual name of the package on github
-    - The `setup` is a bool for whether or not the plugin requires a setup file to use
+The `pluginName` and `plugin` can be different:
+- The `pluginName` is what you want to call the plugin in your setup
+- The `plugin` is the actual name of the plugin on github
+- The `setup` is a bool for whether or not the plugin requires a setup file to use
 
-### Removing packages
+### Removing plugins
 
-To remove packages, simply remove the line corresponding to the package in your `batman.lua` file.
+To remove plugins, simply remove the line corresponding to the plugin in your `batman.lua` file.
 
 ## Commands
 
 ### Install
 
-To install new packages, run the following in NeoVim:
+To install new plugins, run the following in NeoVim:
 
 ```vim
 :BatLoad
 ```
 
-Each package, if specified in the `batman.lua` file, is given a `<package>.lua` file in the setup folder.
+Each plugin, if specified in the `batman.lua` file, is given a `<plugin>.lua` file in the setup folder.
 
-You can modify that file to change the options for each package. It is up to you to find out what the options for those are and how to set them.
+You can modify that file to change the options for each plugin. It is up to you to find out what the options for those are and how to set them.
 
 ### Uninstall
 
-To uninstall unused packages, run the following in NeoVim:
+To uninstall unused plugins, run the following in NeoVim:
 
 ```vim
 :BatKill
@@ -105,8 +105,7 @@ require("batman").setup({
     start = {
         load = false -- true, false
     },
-    delete = "rm -rf", -- any command that removes files and directories in your shell
-})
+    delete = "rm -rf", -- any remove command string})
 ```
 
 Here is an explanation of what each of the options do
