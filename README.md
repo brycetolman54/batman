@@ -4,7 +4,9 @@ This is a super simple plugin manager that I am writing to get a bit acquainted 
 
 This manager is intended more for personal use, but I have made it public in case any young person is looking around at NeoVim and doesn't want to put in the work to understand one of the more complicated plugin managers at the start.
 
-Hopefully everything I have here is simple and straightforward. I try to make my code easy to follow. 
+Hopefully everything I have here is simple and straightforward. I try to make my code easy to follow.
+
+You can see how to use this plugin manager either below or by running `:help BatMan` in NeoVim
 
 ## Install
 
@@ -130,11 +132,6 @@ Here is an explanation of what each of the options do
 
 - Add the following functionality:
     - Make one for updating the plugins
-    - Add commands for all of these
-    - Maybe make them lazy load for when tehy are used
-    - In the init, maybe run BatLoad everytime
-    - Maybe make docs
-    - Maybe make a checkhealth, though I don't know what I would need to check
 
 <!--
 Unicode icons:
