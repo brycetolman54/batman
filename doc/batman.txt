@@ -1,11 +1,16 @@
- ____        _   __  __             
-| __ )  __ _| |_|  \/  | __ _ _ __  
-|  _ \ / _` | __| |\/| |/ _` | '_ \ 
-| |_) | (_| | |_| |  | | (_| | | | |
-|____/ \__,_|\__|_|  |_|\__,_|_| |_|                *BatMan*
+*BatMan* A simple plugin manager for Neovim
+` ____        _   __  __             `
+`| __ )  __ _| |_|  \/  | __ _ _ __  `
+`|  _ \ / _  | __| |\/| |/ _  | '_ \ 
+`| |_) | (_| | |_| |  | | (_| | | | |`
+`|____/ \__,_|\__|_|  |_|\__,_|_| |_|`
 
-A simple plugin manager for Neovim
+CONTENTS                                            *batman*
 
+1. Introduction:     |batman-intro|
+2. Commands:         |batman-commands|
+3. Configuration:    |batman-config|
+4. Author:           |batman-author|
 ===========================================================
 
 INTRODUCTION                                  *batman-intro*
