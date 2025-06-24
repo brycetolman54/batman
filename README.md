@@ -116,7 +116,7 @@ require("batman").setup({
         full = false, -- true, false
     },
     delete = "rm -rf", -- any remove command string
-    })
+})
 ```
 
 Here is an explanation of what each of the options do
