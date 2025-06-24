@@ -14,6 +14,7 @@ return function(plugs, setup, buf, on_done)
   -- pull the values
   local names, _, _ = s.read_repos()
   local dirs = s.read_dirs(plugs)
+  local top_line, bottom_line = s.get_box("Remove")
 
   -- compare the lists and remove repos if needed
   local co = coroutine.create(function()
@@ -25,15 +26,15 @@ return function(plugs, setup, buf, on_done)
           if ok then
             ok, msg = update_init(setup, dir)
             if ok then
-              s.write(buf, { "\u{2705} " .. dir .. " removed successfully" })
+              s.write(buf, { "\u{2705} " .. dir .. " removed successfully" }, true)
             else
-              s.write(buf, { msg })
+              s.write(buf, { msg }, true)
             end
           else
-            s.write(buf, { msg })
+            s.write(buf, { msg }, true)
           end
         else
-          s.write(buf, { msg })
+          s.write(buf, { msg }, true)
         end
         posted = true
         coroutine.yield()
@@ -46,11 +47,13 @@ return function(plugs, setup, buf, on_done)
     if ok and coroutine.status(co) ~= "dead" then
       vim.defer_fn(step, 10)
     else
+      s.write(buf, { bottom_line })
       if on_done then
         on_done(posted)
       end
     end
   end
 
+  s.write(buf, { "", top_line })
   step()
 end

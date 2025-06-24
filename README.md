@@ -94,6 +94,14 @@ To uninstall unused plugins, run the following in NeoVim:
 :BatKill
 ```
 
+### All
+
+You can run all of the above commands in one with this command:
+
+```vim
+:BatFull
+```
+
 ## Options
 
 Here is an example of how to set options for the manager (which you would do in the root `init.lua` file where you require the manager).
@@ -103,14 +111,18 @@ Each option shows its default and then is followed by the possible options.
 ```lua
 require("batman").setup({
     start = {
-        load = false -- true, false
+        load = false, -- true, false
+        kill = false, -- true, false
+        full = false, -- true, false
     },
     delete = "rm -rf", -- any remove command string})
 ```
 
 Here is an explanation of what each of the options do
 - Start: determines if a command should run upon NeoVim startup
-    - Load: whether or not to run BatLoad
+    - Load: whether or not to run `BatLoad`
+    - Kill: whether or not to run `BatKill`
+    - Full: whether or not to run `BatFull`
 - Delete: command to use to remove plugin repos
 
 ## Todo

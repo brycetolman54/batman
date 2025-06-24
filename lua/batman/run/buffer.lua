@@ -15,7 +15,6 @@ function M.openBuf()
     string.rep("=", cols),
     string.rep(" ", spaces) .. "BatMan Results" .. string.rep(" ", spaces),
     string.rep("=", cols),
-    "",
   })
   vim.api.nvim_set_current_buf(buf)
   vim.bo[buf].buftype = "nofile"

@@ -37,3 +37,18 @@ vim.api.nvim_create_user_command("BatKill", function()
     end)
   end)
 end, {})
+vim.api.nvim_create_user_command("BatFull", function()
+  local buf = buff.openBuf()
+  vim.schedule(function()
+    add(plugs, setup, buf, function(posted_add)
+      remove(plugs, setup, buf, function(posted_remove)
+        if posted_add or posted_remove then
+          buff.finishBuf(buf)
+        else
+          vim.cmd("tabclose")
+        end
+        print("BatFull Finished!")
+      end)
+    end)
+  end)
+end, {})

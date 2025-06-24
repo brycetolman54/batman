@@ -11,6 +11,7 @@ return function(plugs, setup, buf, on_done)
   -- pull the values
   local names, repos, setups = s.read_repos()
   local dirs = s.read_dirs(plugs)
+  local top_line, bottom_line = s.get_box("Load")
 
   -- compare the lists and add repos if needed
   local co = coroutine.create(function()
@@ -22,21 +23,21 @@ return function(plugs, setup, buf, on_done)
           if ok_2 then
             local ok_3, msg_3 = update_init(setup, name, setups[i])
             if ok_3 then
-              s.write(buf, { "\u{2705} " .. name .. " added successfully" })
+              s.write(buf, { "\u{2705} " .. name .. " added successfully" }, true)
               if msg_2 ~= "" then
-                s.write(buf, { msg_2 })
+                s.write(buf, { msg_2 }, true)
               end
               if msg_3 ~= "" then
-                s.write(buf, { msg_3 })
+                s.write(buf, { msg_3 }, true)
               end
             else
-              s.write(buf, { msg_3 })
+              s.write(buf, { msg_3 }, true)
             end
           else
-            s.write(buf, { msg_2 })
+            s.write(buf, { msg_2 }, true)
           end
         else
-          s.write(buf, { msg_1 })
+          s.write(buf, { msg_1 }, true)
         end
         posted = true
         coroutine.yield()
@@ -49,11 +50,13 @@ return function(plugs, setup, buf, on_done)
     if ok and coroutine.status(co) ~= "dead" then
       vim.defer_fn(step, 10)
     else
+      s.write(buf, { bottom_line })
       if on_done then
         on_done(posted)
       end
     end
   end
 
+  s.write(buf, { "", top_line })
   step()
 end
