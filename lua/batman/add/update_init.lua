@@ -10,7 +10,7 @@ return function(setup, name, needed)
   -- see if a require line is already in the init file
   for l in io.lines(init) do
     if l == line then
-      return true, "    \u{2611} root init already requires setup file"
+      return true, "    \u{2611}  root init already requires setup file"
     end
   end
 

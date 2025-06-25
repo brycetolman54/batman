@@ -6,7 +6,7 @@ return function(setup, name, needed)
   -- check to see if the file exists
   local f = io.open(setup .. name .. ".lua", "r")
   if f then
-    return true, "    \u{2611} Using existing setup file"
+    return true, "    \u{2611}  Using existing setup file"
   end
 
   -- else make the file
