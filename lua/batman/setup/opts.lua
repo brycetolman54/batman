@@ -1,7 +1,9 @@
 local M = {
   opts = {
     start = {
-      load = true,
+      load = false,
+      kill = false,
+      full = false,
     },
     delete = "rm -rf",
   },
