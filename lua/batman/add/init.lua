@@ -52,7 +52,7 @@ return function(plugs, setup, buf, on_done)
         on_done(posted)
       end
       for _, name in ipairs(pending) do
-        vim.cmd("packadd " .. name)
+        vim.opt.runtimepath:append(s.plugs .. name)
         vim.schedule(function()
           require("setup." .. name)
         end)
