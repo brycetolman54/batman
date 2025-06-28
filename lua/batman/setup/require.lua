@@ -3,11 +3,11 @@ local s = require("batman.shared")
 
 -- get the dirs and names
 local files = s.read_files(s.setup)
-local names, _, _ = s.read_repos()
+local dirs = s.read_dirs(s.plugs)
 
 -- require the right plugins
-for _, name in ipairs(names) do
-  if s.find_repo(files, name .. ".lua") then
-    require("setup." .. name)
+for _, dir in ipairs(dirs) do
+  if s.find_repo(files, dir .. ".lua") then
+    require("setup." .. dir)
   end
 end
