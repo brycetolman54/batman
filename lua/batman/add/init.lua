@@ -55,7 +55,6 @@ return function(plugs, setup, buf, on_done)
       end
       for _, name in ipairs(pending_add) do
         vim.opt.runtimepath:append(s.plugs .. name)
-        print(name)
       end
       for _, name in ipairs(pending_setup) do
         vim.schedule(function()
