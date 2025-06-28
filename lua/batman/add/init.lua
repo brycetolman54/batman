@@ -2,6 +2,9 @@ return function(plugs, setup, buf, on_done)
   -- set up a bool to track the return
   local posted = false
 
+  -- set up a table to hold the requires
+  local pending = {}
+
   -- get our functions
   local s = require("batman.shared")
   local add_repo = require("batman.add.add_repository")
@@ -25,7 +28,7 @@ return function(plugs, setup, buf, on_done)
               s.write(buf, { msg_2 }, true)
             end
             if setups[i] then
-              require("setup." .. name)
+              table.insert(pending, name)
             end
           else
             s.write(buf, { msg_2 }, true)
@@ -47,6 +50,9 @@ return function(plugs, setup, buf, on_done)
       s.write(buf, { bottom_line })
       if on_done then
         on_done(posted)
+      end
+      for _, name in ipairs(pending) do
+        require("setup." .. name)
       end
     end
   end
