@@ -28,13 +28,8 @@ In order to get things up and running, run this command:
 If you don't want to trust my setup script, you need to do the following:
 
 1. Make a folder called "setup" in the "~/.config/nvim/lua" directory
-2. Make a file called "init.lua" in that folder that has the following line:
 
-```lua
-require("setup.batman")
-```
-
-3. Make a file called "batman.lua" in that folder that has the following text:
+2. Make a file called "batman.lua" in that folder that has the following text:
 
 ```lua
 return {
@@ -46,7 +41,7 @@ return {
 }
 ```
 
-4. Add the following line to your top level "init.lua" file:
+3. Add the following line to your top level "init.lua" file:
 ```lua
 require("batman").setup({})
 ```
