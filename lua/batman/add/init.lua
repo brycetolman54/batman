@@ -3,7 +3,8 @@ return function(plugs, setup, buf, on_done)
   local posted = false
 
   -- set up a table to hold the requires
-  local pending = {}
+  local pending_setup = {}
+  local pending_add = {}
 
   -- get our functions
   local s = require("batman.shared")
@@ -28,8 +29,9 @@ return function(plugs, setup, buf, on_done)
               s.write(buf, { msg_2 }, true)
             end
             if setups[i] then
-              table.insert(pending, name)
+              table.insert(pending_setup, name)
             end
+            table.insert(pending_add, name)
           else
             s.write(buf, { msg_2 }, true)
           end
@@ -51,8 +53,10 @@ return function(plugs, setup, buf, on_done)
       if on_done then
         on_done(posted)
       end
-      for _, name in ipairs(pending) do
+      for _, name in ipairs(pending_add) do
         vim.opt.runtimepath:append(s.plugs .. name)
+      end
+      for _, name in ipairs(pending_setup) do
         vim.schedule(function()
           require("setup." .. name)
         end)
