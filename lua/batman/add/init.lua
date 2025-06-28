@@ -53,7 +53,9 @@ return function(plugs, setup, buf, on_done)
       end
       for _, name in ipairs(pending) do
         vim.cmd("packadd " .. name)
-        require("setup." .. name)
+        vim.schedule(function()
+          require("setup." .. name)
+        end)
       end
     end
   end
