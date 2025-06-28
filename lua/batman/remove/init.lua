@@ -9,7 +9,6 @@ return function(plugs, setup, buf, on_done)
   local s = require("batman.shared")
   local rm_repo = require("batman.remove.rm_repository")
   local rm_setup = require("batman.remove.rm_setup")
-  local update_init = require("batman.remove.update_init")
 
   -- pull the values
   local names, _, _ = s.read_repos()
@@ -24,12 +23,7 @@ return function(plugs, setup, buf, on_done)
         if ok then
           ok, msg = rm_setup(setup, dir, del_cmd)
           if ok then
-            ok, msg = update_init(setup, dir)
-            if ok then
-              s.write(buf, { "\u{2705} " .. dir .. " removed successfully" }, true)
-            else
-              s.write(buf, { msg }, true)
-            end
+            s.write(buf, { "\u{2705} " .. dir .. " removed successfully" }, true)
           else
             s.write(buf, { msg }, true)
           end

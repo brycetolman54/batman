@@ -6,7 +6,6 @@ return function(plugs, setup, buf, on_done)
   local s = require("batman.shared")
   local add_repo = require("batman.add.add_repository")
   local add_setup = require("batman.add.add_setup")
-  local update_init = require("batman.add.update_init")
 
   -- pull the values
   local names, repos, setups = s.read_repos()
@@ -21,17 +20,12 @@ return function(plugs, setup, buf, on_done)
         if ok_1 then
           local ok_2, msg_2 = add_setup(setup, name, setups[i])
           if ok_2 then
-            local ok_3, msg_3 = update_init(setup, name, setups[i])
-            if ok_3 then
-              s.write(buf, { "\u{2705} " .. name .. " added successfully" }, true)
-              if msg_2 ~= "" then
-                s.write(buf, { msg_2 }, true)
-              end
-              if msg_3 ~= "" then
-                s.write(buf, { msg_3 }, true)
-              end
-            else
-              s.write(buf, { msg_3 }, true)
+            s.write(buf, { "\u{2705} " .. name .. " added successfully" }, true)
+            if msg_2 ~= "" then
+              s.write(buf, { msg_2 }, true)
+            end
+            if setups[i] then
+              require("setup." .. name)
             end
           else
             s.write(buf, { msg_2 }, true)

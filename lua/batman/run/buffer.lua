@@ -38,7 +38,7 @@ end
 
 -- set up a function for finishing the buffer
 function M.finishBuf(buf)
-  write(buf, { "", "Press Enter or q to close this window" })
+  write(buf, { "", "  Press Enter or q to close this window" })
 
   vim.keymap.set("n", "q", "<cmd>tabclose<cr>", { buffer = buf, noremap = true, silent = true })
   vim.keymap.set("n", "<cr>", "<cmd>tabclose<cr>", { buffer = buf, noremap = true, silent = true })

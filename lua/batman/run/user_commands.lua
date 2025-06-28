@@ -1,7 +1,5 @@
--- set up the paths
-local home = vim.fn.expand("~/.config/nvim")
-local plugs = home .. "/pack/plugins/start/"
-local setup = home .. "/lua/setup/"
+-- grab the shared things
+local s = require("batman.shared")
 
 -- bring in the actions to use
 local add = require("batman.add")
@@ -14,7 +12,7 @@ local buff = require("batman.run.buffer")
 vim.api.nvim_create_user_command("BatLoad", function()
   local buf = buff.openBuf()
   vim.schedule(function()
-    add(plugs, setup, buf, function(posted)
+    add(s.plugs, s.setup, buf, function(posted)
       if posted then
         buff.finishBuf(buf)
       else
@@ -27,7 +25,7 @@ end, {})
 vim.api.nvim_create_user_command("BatKill", function()
   local buf = buff.openBuf()
   vim.schedule(function()
-    remove(plugs, setup, buf, function(posted)
+    remove(s.plugs, s.setup, buf, function(posted)
       if posted then
         buff.finishBuf(buf)
       else
