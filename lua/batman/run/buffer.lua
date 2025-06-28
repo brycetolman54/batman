@@ -33,11 +33,6 @@ function M.openBuf()
   vim.opt_local.sidescrolloff = 0
   vim.opt_local.spell = false
 
-  vim.schedule(function()
-    vim.opt_local.winhighlight = "Normal:BatManDark"
-    vim.cmd("hi BatManDark guibg=#000000")
-  end)
-
   return buf
 end
 
